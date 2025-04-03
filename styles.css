@@ -1,0 +1,317 @@
+/* styles.css */
+:root {
+    --primary-blue: #0A1A2F;
+    --accent-gold: #FFD700;
+    --success-green: #2ECC71;
+    --error-red: #E74C3C;
+    --text-light: #FFFFFF;
+    --chart-bg: #1A2A4F;
+    --hover-gold: rgba(255, 215, 0, 0.1);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--primary-blue);
+    color: var(--text-light);
+    margin: 0;
+    padding-top: 60px;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: var(--accent-gold);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 5px;
+}
+
+/* Top Bar & Navigation */
+.top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--primary-blue);
+    padding: 10px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.broker-selector {
+    float: right;
+    margin-right: 20px;
+    
+    select {
+        color: var(--accent-gold);
+        border: 1px solid var(--accent-gold);
+        background: rgba(255, 215, 0, 0.05);
+        padding: 5px 10px;
+        border-radius: 4px;
+    }
+}
+
+.broker-icon {
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.main-nav {
+    ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+        
+        li a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            
+            &.active, &:hover {
+                background: var(--hover-gold);
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            }
+        }
+    }
+}
+
+/* Dashboard Section */
+.balance-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.balance-card {
+    background: var(--chart-bg);
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    
+    .balance-amount {
+        color: var(--accent-gold);
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+}
+
+.portfolio-section {
+    margin: 2rem 0;
+    
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        
+        .portfolio-card {
+            background: var(--chart-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s;
+            
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+                
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    border: 2px solid var(--accent-gold);
+                    border-radius: 10px;
+                }
+            }
+            
+            h3 {
+                color: var(--accent-gold);
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.roi-graph {
+    background: var(--chart-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 1px solid var(--accent-gold);
+}
+
+/* Trade Section */
+.trade-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    
+    .chart-container {
+        background: var(--chart-bg);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid var(--accent-gold);
+        
+        #priceChart {
+            background: rgba(255, 215, 0, 0.05);
+        }
+    }
+}
+
+.trade-panel {
+    background: var(--chart-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--accent-gold);
+    
+    .order-types {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        
+        button {
+            flex: 1;
+            background: none;
+            border: 1px solid var(--accent-gold);
+            color: var(--text-light);
+            padding: 8px;
+            
+            &.active {
+                background: var(--hover-gold);
+                color: var(--accent-gold);
+            }
+        }
+    }
+    
+    .trade-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        
+        .trade-action {
+            display: flex;
+            gap: 15px;
+            
+            button {
+                flex: 1;
+                padding: 12px;
+                font-weight: bold;
+                
+                &.buy-btn { background: var(--success-green); }
+                &.sell-btn { background: var(--error-red); }
+            }
+        }
+        
+        .order-info {
+            color: var(--accent-gold);
+            
+            .clock-icon {
+                font-size: 1.2em;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+/* News Section */
+.news-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    
+    #postArticle {
+        background: var(--accent-gold);
+        color: var(--primary-blue);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+    }
+}
+
+.news-article {
+    background: var(--chart-bg);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    
+    h4 {
+        color: var(--accent-gold);
+        border-left: 4px solid var(--accent-gold);
+        padding-left: 10px;
+    }
+}
+
+/* Profile Section */
+.profile-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    
+    .wallet-card {
+        background: var(--chart-bg);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        
+        h4 { color: var(--accent-gold); }
+    }
+    
+    #transactionHistory {
+        width: 100%;
+        border: 1px solid var(--accent-gold);
+        border-collapse: collapse;
+        
+        th {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-gold);
+            padding: 10px;
+        }
+        
+        td {
+            padding: 8px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+    }
+    
+    .settings-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        
+        button {
+            text-align: left;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            transition: all 0.3s;
+            
+            &:hover {
+                color: var(--accent-gold);
+                border-left: 3px solid var(--accent-gold);
+            }
+        }
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .balance-container { flex-direction: column; }
+    .trade-container { grid-template-columns: 1fr; }
+    .profile-container { grid-template-columns: 1fr; }
+    
+    .main-nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .broker-selector {
+        float: none;
+        text-align: center;
+        margin: 10px 0;
+    }
+}
