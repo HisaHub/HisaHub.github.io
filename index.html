@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HisaHub - Smart Trading</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="broker-selector">
+            <img src="broker-icon.png" alt="Broker" class="broker-icon">
+            <select id="brokerSelect">
+                <option value="ABC">ABC Capital</option>
+                <option value="XYZ">XYZ Securities</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#dashboard" class="active">Dashboard</a></li>
+            <li><a href="#trade">Trade</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#profile">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="active-section">
+        <div class="balance-container">
+            <div class="balance-card">
+                <h3>Previous Balance</h3>
+                <div class="balance-amount" id="previousBalance">KES 1,500,000</div>
+            </div>
+            <div class="balance-card">
+                <h3>Live Balance</h3>
+                <div class="balance-amount" id="liveBalance">KES 1,523,400</div>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <h2>Your Portfolios</h2>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolios will be added dynamically -->
+            </div>
+        </div>
+
+        <div class="roi-graph">
+            <canvas id="performanceChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Trade Section -->
+    <section id="trade">
+        <div class="trade-container">
+            <div class="chart-container">
+                <div class="stock-selector">
+                    <select id="stockSelector">
+                        <option value="SAF">Safaricom</option>
+                        <option value="KCB">KCB Bank</option>
+                    </select>
+                </div>
+                <canvas id="priceChart"></canvas>
+            </div>
+
+            <div class="trade-panel">
+                <div class="order-types">
+                    <button class="order-type active">Market</button>
+                    <button class="order-type">Limit</button>
+                    <button class="order-type">Stop</button>
+                </div>
+
+                <div class="trade-form">
+                    <div class="trade-action">
+                        <button class="buy-btn">Buy</button>
+                        <button class="sell-btn">Sell</button>
+                    </div>
+                    <input type="number" id="quantity" placeholder="Quantity">
+                    <div class="order-info">
+                        <span class="clock-icon">🕒</span>
+                        <span id="pendingOrders">0 Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+        <div class="news-controls">
+            <select id="newsFilter">
+                <option value="all">All Stocks</option>
+                <option value="SAF">Safaricom</option>
+                <option value="KCB">KCB Bank</option>
+            </select>
+            <button id="postArticle">+ New Post</button>
+        </div>
+
+        <div class="news-feed" id="newsFeed">
+            <!-- News articles will be loaded here -->
+        </div>
+
+        <div class="user-posts">
+            <h3>Community Posts</h3>
+            <div id="communityPosts">
+                <!-- User posts will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="profile-container">
+            <div class="account-info">
+                <h2>Account Details</h2>
+                <div class="wallets">
+                    <div class="wallet-card">
+                        <h4>M-Pesa Wallet</h4>
+                        <div class="balance">KES 150,000</div>
+                    </div>
+                </div>
+                
+                <div class="account-history">
+                    <h3>Transaction History</h3>
+                    <table id="transactionHistory">
+                        <!-- Transactions will be added dynamically -->
+                    </table>
+                </div>
+            </div>
+
+            <div class="account-settings">
+                <h3>Settings</h3>
+                <div class="settings-menu">
+                    <button>Security</button>
+                    <button>Notifications</button>
+                    <button>Support</button>
+                    <button>About</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
